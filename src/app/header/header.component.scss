@@ -1,0 +1,13 @@
+.navbar {
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #125569;
+
+    a {
+        color: white;
+    }
+}
+
+.router-link-active {
+    background-color: red;
+}
