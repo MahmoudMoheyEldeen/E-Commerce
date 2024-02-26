@@ -11,9 +11,10 @@ import { TableModule } from 'primeng/table';
 import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { FormsModule } from '@angular/forms';
+import { MainComponentComponent } from './main-component/main-component.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, MainComponentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
