@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TableModule } from 'primeng/table';
 import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -23,6 +24,7 @@ import { TagModule } from 'primeng/tag';
     TableModule,
     RatingModule,
     TagModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
