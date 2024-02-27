@@ -12,9 +12,10 @@ import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { FormsModule } from '@angular/forms';
 import { MainComponentComponent } from './main-component/main-component.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, MainComponentComponent],
+  declarations: [AppComponent, HomeComponent, MainComponentComponent, CartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

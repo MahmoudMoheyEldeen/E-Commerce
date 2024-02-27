@@ -1,0 +1,20 @@
+.p-button-success {
+    height: 2rem;
+    width: 2.5rem;
+    border-radius: 5px;
+    background-color: var(--link-active-color);
+    border: none;
+
+    &:hover {
+        background-color: #cc9363;
+    }
+}
+
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}

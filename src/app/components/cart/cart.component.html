@@ -1,0 +1,77 @@
+<div class="row">
+
+    <div class="row row-for-cart-label d-flex mx-auto mt-3">
+        <p>Shop Popular Categories</p>
+    </div>
+    <div class="row row-for-all-cart-products d-flex mx-auto">
+
+        <div class="card mt-3">
+            <!-- 
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Reviews</th>
+                    <th>Status</th>
+                </tr>
+                <tr *ngFor="let product of products ; let i = index">
+                    <td>{{product.name}}</td>
+                    <td>{{product.image}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.reviews}}</td>
+                    <td>
+                        <button class="p-button-success mx-2" (click)="decreaseQuantity()">-</button>
+                        <span>{{product.quantity}}</span>
+                        <button class="p-button-success mx-2" (click)="increaseQuantity(i)">+</button>
+                    </td>
+                </tr>
+            </table> -->
+            <p-table [value]="products" [tableStyle]="{'min-width': '60rem'}">
+
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Reviews</th>
+                        <th>Status</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+
+                        <td>{{ product.name }}</td>
+                        <td><img src="assets/imgs/main-slider-1.jpeg" [alt]="product.name" width="100"
+                                class="shadow-4" /></td>
+                        <td>{{ product.price | currency:'USD' }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>
+                            <p-rating [(ngModel)]="product.userSelectedRating" [readonly]="false" [cancel]="false"
+                                [stars]="5"></p-rating>
+                        </td>
+                        <!-- <td><p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag></td> -->
+                        <td>
+                            <button class="p-button-success mx-2" (click)="decreaseQuantity()">-</button>
+                            <span>{{ product.quantity }}</span>
+                            <button class="p-button-success mx-2" (click)="increaseQuantity(product.id)">+</button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="flex align-items-center justify-content-between">
+                        In total there are {{products ? products.length : 0 }} products.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+
+    </div>
+
+
+</div>
