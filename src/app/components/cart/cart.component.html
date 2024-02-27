@@ -56,9 +56,12 @@
                         </td>
                         <!-- <td><p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag></td> -->
                         <td>
-                            <button class="p-button-success mx-2" (click)="decreaseQuantity()">-</button>
-                            <span>{{ product.quantity }}</span>
-                            <button class="p-button-success mx-2" (click)="increaseQuantity(product.id)">+</button>
+                            <button class="p-button-success mx-1" (click)="decreaseQuantity(product.id)">-</button>
+                            <span class="px-3">{{ product.quantity }}</span>
+                            <button class="p-button-success mx-1" (click)="increaseQuantity(product.id)">+</button>
+                        </td>
+                        <td>
+                            <button class="remove-btn" label="Remove" severity="danger">Remove Items</button>
                         </td>
                     </tr>
                 </ng-template>

@@ -91,5 +91,9 @@ export class CartComponent implements OnInit {
     let upadetdQuantity = this.products[index].quantity++;
     console.log(upadetdQuantity);
   }
-  decreaseQuantity() {}
+  decreaseQuantity(index: number) {
+    console.log('index is', index);
+    let upadetdQuantity = this.products[index].quantity--;
+    console.log(upadetdQuantity);
+  }
 }
