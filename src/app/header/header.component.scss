@@ -10,6 +10,12 @@
 
 .router-link-active {
     background-color: var(--link-active-color);
-    color: white;
+    color: white !important;
     border-radius: 10px;
+}
+
+.nav-link:hover {
+    // background-color: var(--link-active-color);
+    color: #E5A46E !important;
+
 }

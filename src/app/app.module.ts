@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { GalleriaModule } from 'primeng/galleria';
 import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,8 @@ import { ToastModule } from 'primeng/toast';
     RouterModule,
     CardModule,
     GalleriaModule,
+    ToastModule,
+    MessagesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

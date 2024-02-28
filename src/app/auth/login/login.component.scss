@@ -5,3 +5,14 @@
     height: 1px;
     background: #eee;
 }
+
+.btn-login {
+    background-color: #125669;
+    border: none;
+
+    &:active {
+        background-color: #0e3c49;
+    }
+
+
+}

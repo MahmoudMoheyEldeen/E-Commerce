@@ -17,7 +17,7 @@
             </div>
 
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-8 pt-5">
             <p-card header="Jeans pants">
                 <p class="m-0">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error
@@ -25,8 +25,12 @@
                     perferendis esse, cupiditate neque
                     quas!
                 </p>
-                <!-- <button type="button" pButton pRipple (click)="showSuccess()" label="Success"
-                    class="p-button-success"></button> -->
+                <p-toast position="top-right"></p-toast>
+                <button type="button" pButton pRipple (click)="x ? showSuccess() : showError();" label="Add To Cart"
+                    class="p-button-success mt-4"></button>
+
+
+                <!-- <button type="button" pButton pRipple label="Success" class="p-button-success"></button> -->
 
             </p-card>
 
