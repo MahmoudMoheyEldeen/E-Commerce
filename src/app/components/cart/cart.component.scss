@@ -19,19 +19,21 @@ td {
     text-align: center;
 }
 
+
+
 .remove-btn {
     border-radius: 10px;
     height: 2rem;
     width: 6rem;
     border: none;
-    background-color: #DC2626;
+    background-color: #125669;
     color: white;
     text-align: center;
-    padding-top: 5px;
+    font-size: 12px;
 
 
     &:hover {
-        background-color: #c31d1d;
+        background-color: #0e414f;
         color: white;
 
     }

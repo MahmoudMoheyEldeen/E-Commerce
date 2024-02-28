@@ -43,7 +43,7 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-product>
-                    <tr>
+                    <tr [routerLink]="['/maincomponent/product-details']">
 
                         <td>{{ product.name }}</td>
                         <td><img src="assets/imgs/main-slider-1.jpeg" [alt]="product.name" width="100"

@@ -13,9 +13,20 @@ import { TagModule } from 'primeng/tag';
 import { FormsModule } from '@angular/forms';
 import { MainComponentComponent } from './main-component/main-component.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { RouterModule } from '@angular/router';
+import { CardModule } from 'primeng/card';
+import { GalleriaModule } from 'primeng/galleria';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, MainComponentComponent, CartComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    MainComponentComponent,
+    CartComponent,
+    ProductDetailsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,6 +38,9 @@ import { CartComponent } from './components/cart/cart.component';
     RatingModule,
     TagModule,
     FormsModule,
+    RouterModule,
+    CardModule,
+    GalleriaModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 <div class="row">
     <div class="row row-for-caruosel d-flex mx-auto">
+
         <div class="col-lg-9  px-0">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="5000">
                 <ol class="carousel-indicators">
@@ -84,7 +85,7 @@
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
-                    <tr>
+                    <tr [routerLink]="['/product-details']">
                         <th>Name</th>
                         <th>Image</th>
                         <th>Price</th>
@@ -94,7 +95,7 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-product>
-                    <tr>
+                    <tr [routerLink]="['/maincomponent/product-details']">
                         <td>{{product.name}}</td>
                         <td><img src="assets/imgs/main-slider-1.jpeg" [alt]="product.name" width="100"
                                 class="shadow-4" /></td>
