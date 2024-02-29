@@ -5,6 +5,7 @@ import { MainComponentComponent } from './main-component/main-component.componen
 import { RegisterComponent } from './auth/register/register.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
         title: 'All-Products',
       },
     ],
+  },
+  {
+    path: '**',
+    component: ErrorPageComponent,
   },
 ];
 

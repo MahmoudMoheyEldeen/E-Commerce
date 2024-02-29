@@ -19,6 +19,7 @@ import { CardModule } from 'primeng/card';
 import { GalleriaModule } from 'primeng/galleria';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MessagesModule } from 'primeng/messages';
     MainComponentComponent,
     CartComponent,
     ProductDetailsComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

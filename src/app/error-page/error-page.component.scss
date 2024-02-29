@@ -1,12 +1,13 @@
-.divider:after,
-.divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
+.error-wrapper {
+    height: 100vh;
+
+    img {
+        width: 30%;
+    }
 }
 
-.btn-login {
+.btn-backhome {
+    width: 200px;
     background-color: #125669;
     border: none;
     color: white;
@@ -14,6 +15,4 @@
     &:active {
         background-color: #0e3c49;
     }
-
-
 }
