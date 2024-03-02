@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TableModule } from 'primeng/table';
 import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponentComponent } from './main-component/main-component.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -78,6 +78,7 @@ import { OrdersComponent } from './orders/orders.component';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
