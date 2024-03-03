@@ -7,6 +7,7 @@ import {
   Message,
   MessageServiceService,
 } from 'src/app/Services/message-service.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -40,23 +41,30 @@ export class RegisterComponent {
   });
   constructor(
     private _authService: AuthServiceService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _router: Router
   ) {}
 
   submitRegister() {
+    this.isLoading = true;
     console.log('this is register form value  ', this.registerform.value);
-    console.log('asdasdasd');
-    this._authService.signUp(this.registerform.value).subscribe({
-      next: (response) => {
-        console.log('myresponse', response);
-        this.showSuccess();
-      },
-      error: (err) => {
-        console.log('this is error ', err);
-        this.errorMessage = err.error.message;
-        this.showError();
-      },
-    });
+    if (this.registerform.valid) {
+      this._authService.signUp(this.registerform.value).subscribe({
+        next: (response) => {
+          console.log('myresponse', response);
+          if (response.message == 'success') {
+            this._router.navigate(['/login']);
+            this.showSuccess();
+            this.isLoading = false;
+          }
+        },
+        error: (err) => {
+          console.log('this is error ', err);
+          this.errorMessage = err.error.message;
+          this.showError();
+        },
+      });
+    }
   }
 
   showSuccess() {
