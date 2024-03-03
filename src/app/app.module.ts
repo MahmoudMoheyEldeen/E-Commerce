@@ -37,6 +37,7 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { OrdersComponent } from './orders/orders.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SplitStringPipe } from './pipes/split-string.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProductDetailsComponent,
     ErrorPageComponent,
     OrdersComponent,
+    SplitStringPipe,
   ],
   imports: [
     BrowserModule,

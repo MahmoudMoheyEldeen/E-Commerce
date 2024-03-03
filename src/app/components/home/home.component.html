@@ -100,26 +100,27 @@
                         <th>Price</th>
                         <th>Category</th>
                         <th>Reviews</th>
-                        <th>Status</th>
+                        <th>Quantity</th>
                     </tr>
                 </ng-template>
 
                 <ng-template pTemplate="body" let-product>
                     <tr [routerLink]="['/maincomponent/product-details']">
-                        <td>{{product.title}}</td>
+                        <td>{{product.title | splitString:2}}</td>
                         <td><img [src]="product.imageCover" [alt]="product.name" width="100" class="shadow-4" /></td>
-                        <td>{{product.price | currency:'USD'}}</td>
+                        <td>{{product.price | currency:'EGP'}}</td>
                         <td>{{product.category.name}}</td>
                         <td><p-rating [(ngModel)]="product.ratingsAverage" [readonly]="false" [cancel]="false"
                                 [stars]="1"></p-rating> {{product.ratingsAverage}}
                         </td>
-                        <td><p-tag [value]="product.inventoryStatus"
-                                [severity]="getSeverity(product.inventoryStatus)"></p-tag></td>
+                        <!-- <td><p-tag [value]="product.inventoryStatus"
+                                [severity]="getSeverity(product.inventoryStatus)"></p-tag></td> -->
+                        <td>{{product.quantity}}</td>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="summary">
                     <div class="flex align-items-center justify-content-between">
-                        In total there are {{products ? products.length : 0 }} products.
+                        In total there are {{products ? allProducts.length : 0 }} products.
                     </div>
                 </ng-template>
             </p-table>
