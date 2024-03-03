@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/Services/products.service';
+import { Products } from '../../interfaces/products';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  providers: [ProductsService, HttpClient],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  ngOnInit(): void {
+    this.getAllProducts();
+  }
+  constructor(private _productService: ProductsService) {}
   userSelectedRating: number = 3;
+  allProducts: Products[] = [];
   products: any[] = [
     {
       name: 'Dress',
@@ -75,5 +84,18 @@ export class HomeComponent {
     // For example, you can return 'success', 'info', 'warning', or 'danger'
     // based on different statuses.
     return 'info';
+  }
+
+  getAllProducts() {
+    this._productService.getAllProducts().subscribe({
+      next: (Response) => {
+        console.log(
+          'this is subcategory ',
+          Response.data[0].subcategory[0].name
+        );
+        this.allProducts = Response.data;
+        console.log(this.allProducts);
+      },
+    });
   }
 }

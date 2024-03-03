@@ -75,18 +75,27 @@
         </div>
     </div>
     <div class="row row-for-all-products d-flex mx-auto">
+        <!-- <div>
+            <table>
+                <tr>
+                    <th>sold</th>
 
+                </tr>
+                <tr *ngFor="let product of allProducts">
+                    <td>{{product.sold}}</td>
+                </tr>
+            </table>
+        </div> -->
         <div class="card mt-3">
-            <p-table [value]="products" [tableStyle]="{'min-width': '60rem'}">
+            <p-table [value]="allProducts" [tableStyle]="{'min-width': '60rem'}">
                 <ng-template pTemplate="caption">
                     <div class="flex align-items-center justify-content-between">
                         Recently Added
-                        <!-- <p-button icon="pi pi-refresh"></p-button> -->
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr [routerLink]="['/product-details']">
-                        <th>Name</th>
+                        <th>Product Name</th>
                         <th>Image</th>
                         <th>Price</th>
                         <th>Category</th>
@@ -94,15 +103,15 @@
                         <th>Status</th>
                     </tr>
                 </ng-template>
+
                 <ng-template pTemplate="body" let-product>
                     <tr [routerLink]="['/maincomponent/product-details']">
-                        <td>{{product.name}}</td>
-                        <td><img src="assets/imgs/main-slider-1.jpeg" [alt]="product.name" width="100"
-                                class="shadow-4" /></td>
+                        <td>{{product.title}}</td>
+                        <td><img [src]="product.imageCover" [alt]="product.name" width="100" class="shadow-4" /></td>
                         <td>{{product.price | currency:'USD'}}</td>
-                        <td>{{product.category}}</td>
-                        <td><p-rating [(ngModel)]="product. userSelectedRating" [readonly]="false" [cancel]="false"
-                                [stars]="5"></p-rating>
+                        <td>{{product.category.name}}</td>
+                        <td><p-rating [(ngModel)]="product.ratingsAverage" [readonly]="false" [cancel]="false"
+                                [stars]="1"></p-rating> {{product.ratingsAverage}}
                         </td>
                         <td><p-tag [value]="product.inventoryStatus"
                                 [severity]="getSeverity(product.inventoryStatus)"></p-tag></td>
