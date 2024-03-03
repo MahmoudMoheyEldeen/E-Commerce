@@ -15,6 +15,9 @@ import {
   providers: [AuthServiceService, HttpClient, MessageService],
 })
 export class RegisterComponent {
+  errorMessage: any = '';
+  isLoading: boolean = true;
+
   registerform: FormGroup = new FormGroup({
     name: new FormControl(null, [
       Validators.required,
@@ -41,7 +44,7 @@ export class RegisterComponent {
   ) {}
 
   submitRegister() {
-    console.log(this.registerform.value);
+    console.log('this is register form value  ', this.registerform.value);
     console.log('asdasdasd');
     this._authService.signUp(this.registerform.value).subscribe({
       next: (response) => {
@@ -50,6 +53,8 @@ export class RegisterComponent {
       },
       error: (err) => {
         console.log('this is error ', err);
+        this.errorMessage = err.error.message;
+        this.showError();
       },
     });
   }
@@ -59,6 +64,13 @@ export class RegisterComponent {
       severity: 'success',
       summary: 'Success',
       detail: 'Account Created Successfully',
+    });
+  }
+  showError() {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'error',
+      detail: this.errorMessage,
     });
   }
 }
