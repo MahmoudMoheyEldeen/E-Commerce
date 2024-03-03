@@ -76,14 +76,14 @@
     </div>
     <div class="row row-for-all-products d-flex mx-auto">
         <div class="card">
-            <p-table [value]="allProducts" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+            <p-table [value]="allProducts | search:term" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                 [tableStyle]="{'min-width': '50rem'}"
                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                 [rowsPerPageOptions]="[10,25,50]">
                 <ng-template pTemplate="caption" class="d-flex">
                     <div class="col-6 d-flex">
-
-                        <input class="form-control w-100 mx-auto" type="text" placeholder="Search keyword" />
+                        <input [(ngModel)]="term" class="form-control w-100 mx-auto" type="text"
+                            placeholder="Search keyword" />
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
@@ -96,9 +96,8 @@
                         <th>Quantity</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-product ; let-i="index">
+                <ng-template pTemplate="body" let-product>
                     <tr [routerLink]="['/maincomponent/product-details']">
-                        <td>{{ i + 1 }}</td>
                         <td>{{ product.title | splitString:2 }}</td>
                         <td><img [src]="product.imageCover" [alt]="product.name" width="100" class="shadow-4" /></td>
                         <td>{{ product.price | currency:'EGP' }}</td>

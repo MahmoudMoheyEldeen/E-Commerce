@@ -10,6 +10,7 @@ import { Products } from '../../interfaces/products';
   providers: [ProductsService, HttpClient],
 })
 export class HomeComponent implements OnInit {
+  term: string = '';
   first = 0;
 
   rows = 10;
