@@ -17,4 +17,8 @@ export class AuthServiceService {
   signUp(data: any): Observable<any> {
     return this._httpClient.post(`${this.baseUrl}/api/v1/auth/signup`, data);
   }
+
+  logIn(data: any): Observable<any> {
+    return this._httpClient.post(`${this.baseUrl}/api/v1/auth/signin`, data);
+  }
 }
