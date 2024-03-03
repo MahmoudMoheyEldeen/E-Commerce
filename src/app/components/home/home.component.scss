@@ -27,6 +27,20 @@
     color: orange;
 }
 
+td {
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+.form-control {
+    &:focus {
+        outline-color: #E5A46E;
+    }
+}
+
 
 
 

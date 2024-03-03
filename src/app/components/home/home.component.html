@@ -75,26 +75,19 @@
         </div>
     </div>
     <div class="row row-for-all-products d-flex mx-auto">
-        <!-- <div>
-            <table>
-                <tr>
-                    <th>sold</th>
+        <div class="card">
+            <p-table [value]="allProducts" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                [tableStyle]="{'min-width': '50rem'}"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="caption" class="d-flex">
+                    <div class="col-6 d-flex">
 
-                </tr>
-                <tr *ngFor="let product of allProducts">
-                    <td>{{product.sold}}</td>
-                </tr>
-            </table>
-        </div> -->
-        <div class="card mt-3">
-            <p-table [value]="allProducts" [tableStyle]="{'min-width': '60rem'}">
-                <ng-template pTemplate="caption">
-                    <div class="flex align-items-center justify-content-between">
-                        Recently Added
+                        <input class="form-control w-100 mx-auto" type="text" placeholder="Search keyword" />
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
-                    <tr [routerLink]="['/product-details']">
+                    <tr>
                         <th>Product Name</th>
                         <th>Image</th>
                         <th>Price</th>
@@ -103,28 +96,26 @@
                         <th>Quantity</th>
                     </tr>
                 </ng-template>
-
-                <ng-template pTemplate="body" let-product>
+                <ng-template pTemplate="body" let-product ; let-i="index">
                     <tr [routerLink]="['/maincomponent/product-details']">
-                        <td>{{product.title | splitString:2}}</td>
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ product.title | splitString:2 }}</td>
                         <td><img [src]="product.imageCover" [alt]="product.name" width="100" class="shadow-4" /></td>
-                        <td>{{product.price | currency:'EGP'}}</td>
-                        <td>{{product.category.name}}</td>
-                        <td><p-rating [(ngModel)]="product.ratingsAverage" [readonly]="false" [cancel]="false"
-                                [stars]="1"></p-rating> {{product.ratingsAverage}}
+                        <td>{{ product.price | currency:'EGP' }}</td>
+                        <td>{{ product.category.name }}</td>
+                        <td>
+                            <p-rating [(ngModel)]="product.ratingsAverage" [readonly]="false" [cancel]="false"
+                                [stars]="1"></p-rating>
+                            {{ product.ratingsAverage }}
                         </td>
-                        <!-- <td><p-tag [value]="product.inventoryStatus"
-                                [severity]="getSeverity(product.inventoryStatus)"></p-tag></td> -->
-                        <td>{{product.quantity}}</td>
+                        <td>{{ product.quantity }}</td>
                     </tr>
-                </ng-template>
-                <ng-template pTemplate="summary">
-                    <div class="flex align-items-center justify-content-between">
-                        In total there are {{products ? allProducts.length : 0 }} products.
-                    </div>
                 </ng-template>
             </p-table>
         </div>
+
+
+
     </div>
 
 

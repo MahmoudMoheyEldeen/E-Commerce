@@ -10,74 +10,15 @@ import { Products } from '../../interfaces/products';
   providers: [ProductsService, HttpClient],
 })
 export class HomeComponent implements OnInit {
+  first = 0;
+
+  rows = 10;
   ngOnInit(): void {
     this.getAllProducts();
   }
   constructor(private _productService: ProductsService) {}
   userSelectedRating: number = 3;
   allProducts: Products[] = [];
-  products: any[] = [
-    {
-      name: 'Dress',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 50,
-      category: 'Women Clothes',
-      reviews: 3,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 2,
-    },
-    {
-      name: 'Dress',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 70,
-      category: 'Women Clothes',
-      reviews: 3,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 5,
-    },
-    {
-      name: 'skirt',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 10,
-      category: 'Women Clothes',
-      reviews: 3,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 2,
-    },
-    {
-      name: 'Dress',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 50,
-      category: 'Women Clothes',
-      reviews: 5,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 2,
-    },
-    {
-      name: 'playstation 5 ',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 800,
-      category: 'Toys',
-      reviews: 5,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 2,
-    },
-    {
-      name: 'Jeans pants',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 25,
-      category: 'Women Clothes',
-      reviews: 3,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 2,
-    },
-  ];
 
   getSeverity(inventoryStatus: string): string {
     // Your logic to determine severity based on inventoryStatus
@@ -97,5 +38,27 @@ export class HomeComponent implements OnInit {
         console.log(this.allProducts);
       },
     });
+  }
+
+  next() {
+    this.first = this.first + this.rows;
+  }
+
+  prev() {
+    this.first = this.first - this.rows;
+  }
+
+  reset() {
+    this.first = 0;
+  }
+
+  isLastPage(): boolean {
+    return this.allProducts
+      ? this.first === this.allProducts.length - this.rows
+      : true;
+  }
+
+  isFirstPage(): boolean {
+    return this.allProducts ? this.first === 0 : true;
   }
 }
