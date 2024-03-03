@@ -7,6 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthServiceService } from '../Services/auth-service.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -16,6 +18,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    ToastModule,
+    MessagesModule,
   ],
   providers: [],
 })

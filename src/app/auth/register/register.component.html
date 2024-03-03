@@ -7,17 +7,36 @@
                     alt="Phone image">
             </div>
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-
+                <p-toast position="top-right"></p-toast>
                 <form [formGroup]="registerform" (ngSubmit)="submitRegister()">
+
                     <div class=" mb-4">
                         <label class="form-label" for="name"> Name</label>
                         <input formControlName="name" type="text" id="name" class="form-control form-control-lg" />
-
+                        <div *ngIf="registerform.get('name')?.touched && registerform.get('name')?.errors"
+                            class="alert alert-danger">
+                            <p *ngIf="registerform.get('name')?.errors?.['required']" class="m-0 p-1">Name is required
+                            </p>
+                            <p *ngIf="registerform.get('name')?.errors?.['minlength']" class="m-0 p-1">minimum length is
+                                4 characters
+                            </p>
+                            <p *ngIf="registerform.get('name')?.errors?.['maxlength']" class="m-0 p-1">maximum length is
+                                25 characters
+                            </p>
+                        </div>
                     </div>
                     <!-- Email input -->
                     <div class=" mb-4">
                         <label class="form-label" for="email">Email address</label>
                         <input formControlName="email" type="email" id="email" class="form-control form-control-lg" />
+                        <div *ngIf="registerform.get('email')?.touched && registerform.get('email')?.errors"
+                            class="alert alert-danger">
+                            <p *ngIf="registerform.get('email')?.errors?.['required']" class="m-0 p-1">Email is required
+                            </p>
+                            <p *ngIf="registerform.get('email')?.errors?.['email']" class="m-0 p-1">type mail in correct
+                                way
+                            </p>
+                        </div>
 
                     </div>
 
@@ -26,6 +45,14 @@
                         <label class="form-label" for="form1Example23">Password</label>
                         <input formControlName="password" type="password" id="form1Example23"
                             class="form-control form-control-lg" />
+                        <div *ngIf="registerform.get('password')?.touched && registerform.get('password')?.errors"
+                            class="alert alert-danger">
+                            <p *ngIf="registerform.get('password')?.errors?.['required']" class="m-0 p-1">Password is
+                                required
+                            </p>
+                            <p *ngIf="registerform.get('password')?.errors?.['pattern']" class="m-0 p-1">Invalid pattern
+                            </p>
+                        </div>
                     </div>
 
                     <div class=" mb-4">
@@ -37,7 +64,14 @@
                     <div class=" mb-4">
                         <label class="form-label" for="phone"> Phone</label>
                         <input formControlName="phone" type="text" id="phone" class="form-control form-control-lg" />
-
+                        <div *ngIf="registerform.get('phone')?.touched && registerform.get('phone')?.errors"
+                            class="alert alert-danger">
+                            <p *ngIf="registerform.get('phone')?.errors?.['required']" class="m-0 p-1">Phone is required
+                            </p>
+                            <p *ngIf="registerform.get('phone')?.errors?.['pattern']" class="m-0 p-1">accept just egypt
+                                numbers
+                            </p>
+                        </div>
                     </div>
                     <button type="submit">asdasd</button>
                     <!-- Submit button -->
