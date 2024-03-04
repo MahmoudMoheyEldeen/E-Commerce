@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { Products, Brand } from '../interfaces/products';
+import { ProductsService } from '../Services/products.service';
+import { ProductDetails } from '../interfaces/product-details';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -8,21 +12,20 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 })
 export class ProductDetailsComponent implements OnInit {
+  productDetails!: ProductDetails;
+  productId: string = '';
+  brand: Brand[] = [];
   x: boolean = true;
-  constructor(private messageService: MessageService) {}
-  ngOnInit(): void {}
+  constructor(
+    private messageService: MessageService,
+    private _productService: ProductsService,
+    private _activatedRoute: ActivatedRoute
+  ) {}
+  ngOnInit(): void {
+    this.getProductById();
+  }
 
-  images: any[] = [
-    { source: 'assets/imgs/main-slider-1.jpeg' },
-    { source: 'assets/imgs/main-slider-2.jpeg' },
-    { source: 'assets/imgs/main-slider-3.jpeg' },
-    { source: 'assets/imgs/main-slider-1.jpeg' },
-    { source: 'assets/imgs/main-slider-2.jpeg' },
-    { source: 'assets/imgs/main-slider-3.jpeg' },
-    { source: 'assets/imgs/main-slider-1.jpeg' },
-    { source: 'assets/imgs/main-slider-2.jpeg' },
-    { source: 'assets/imgs/main-slider-3.jpeg' },
-  ];
+  images: any[] = [];
 
   responsiveOptions: any[] = [
     {
@@ -66,6 +69,25 @@ export class ProductDetailsComponent implements OnInit {
       severity: 'warn',
       summary: 'Warn',
       detail: 'Message Content',
+    });
+  }
+
+  getProductById() {
+    this._activatedRoute.params.subscribe((params) => {
+      this.productId = params['id'];
+      console.log('this is the id', this.productId);
+    });
+    this._productService.getProductByID(this.productId).subscribe({
+      next: (response) => {
+        // console.log('this is the response', response);
+        this.productDetails = response.data;
+        this.images = response.data.images;
+        console.log('this is the response', this.productDetails);
+        console.log('this is the images', this.images);
+      },
+      error: (err) => {
+        console.log('this is the error', err);
+      },
     });
   }
 }

@@ -97,7 +97,7 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-product>
-                    <tr [routerLink]="['/maincomponent/product-details']">
+                    <tr [routerLink]="['/maincomponent/product-details',product.id]">
                         <td>{{ product.title | splitString:2 }}</td>
                         <td><img [src]="product.imageCover" [alt]="product.name" width="100" class="shadow-4" /></td>
                         <td>{{ product.price | currency:'EGP' }}</td>

@@ -6,11 +6,11 @@
                 <p-galleria [value]="images" [showItemNavigators]="true" [responsiveOptions]="responsiveOptions"
                     [circular]="true" [numVisible]="5" [containerStyle]="{ 'max-width': '640px' }">
                     <ng-template pTemplate="item" let-item>
-                        <img [src]="item.source" style="width: 100%; display: block;" />
+                        <img [src]="item" style="width: 100%; display: block;" />
                     </ng-template>
                     <ng-template pTemplate="thumbnail" let-item>
                         <div class="grid grid-nogutter justify-content-center">
-                            <img [src]="item.source" style="display: block; width: 90%;" />
+                            <img [src]="item" style="display: block; width: 90%;" />
                         </div>
                     </ng-template>
                 </p-galleria>
@@ -18,12 +18,10 @@
 
         </div>
         <div class="col-lg-8 pt-5">
-            <p-card header="Jeans pants">
+
+            <p-card header={{productDetails.brand.name}}>
                 <p class="m-0">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error
-                    repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam
-                    perferendis esse, cupiditate neque
-                    quas!
+                    {{productDetails.description}}
                 </p>
                 <p-toast position="top-right"></p-toast>
                 <button type="button" pButton pRipple (click)="x ? showSuccess() : showError();" label="Add To Cart"
