@@ -1,16 +1,16 @@
 <div class="row">
     <div class="row row-for-product-details d-flex mx-auto">
-        <div class="col-lg-4">
+        <div class="col-lg-4 max-height-class">
 
             <div class="card">
                 <p-galleria [value]="images" [showItemNavigators]="true" [responsiveOptions]="responsiveOptions"
                     [circular]="true" [numVisible]="5" [containerStyle]="{ 'max-width': '640px' }">
                     <ng-template pTemplate="item" let-item>
-                        <img [src]="item" style="width: 100%; display: block;" />
+                        <img class="thumbnail-img" [src]="item" style="display: block;" />
                     </ng-template>
                     <ng-template pTemplate="thumbnail" let-item>
                         <div class="grid grid-nogutter justify-content-center">
-                            <img [src]="item" style="display: block; width: 90%;" />
+                            <img class="gallery-img" [src]="item" style="display: block;" />
                         </div>
                     </ng-template>
                 </p-galleria>
