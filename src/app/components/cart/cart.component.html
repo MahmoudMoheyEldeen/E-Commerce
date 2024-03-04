@@ -1,7 +1,10 @@
 <div class="row">
 
-    <div class="row row-for-cart-label d-flex mx-auto mt-3">
-        <p>Shop Popular Categories</p>
+    <div class="row row-for-cart-label d-flex mx-auto mt-3 flex-wrap">
+        <div class="d-flex">
+            <p>Cart Items</p>
+            <p class="ps-3">{{cartResponseMessage.numOfCartItems}}</p>
+        </div>
     </div>
     <div class="row row-for-all-cart-products d-flex mx-auto">
 
@@ -30,7 +33,7 @@
                     </td>
                 </tr>
             </table> -->
-            <p-table [value]="products" [tableStyle]="{'min-width': '60rem'}">
+            <p-table [value]="cartProducts" [tableStyle]="{'min-width': '60rem'}">
 
                 <ng-template pTemplate="header">
                     <tr>
@@ -45,30 +48,26 @@
                 <ng-template pTemplate="body" let-product>
                     <tr [routerLink]="['/maincomponent/product-details']">
 
-                        <td>{{ product.name }}</td>
-                        <td><img src="assets/imgs/main-slider-1.jpeg" [alt]="product.name" width="100"
-                                class="shadow-4" /></td>
-                        <td>{{ product.price | currency:'USD' }}</td>
-                        <td>{{ product.category }}</td>
+                        <td>{{ product.product.brand.name }}</td>
+                        <td><img [src]="product.product.imageCover" [alt]="product.name" width="100" class="shadow-4" />
+                        </td>
+                        <td>{{ product.price * product.count | currency:'USD' }}</td>
+                        <td>{{ product.product.category.name }}</td>
                         <td>
-                            <p-rating [(ngModel)]="product.userSelectedRating" [readonly]="false" [cancel]="false"
-                                [stars]="5"></p-rating>
+                            <p-rating [(ngModel)]="product.ratingsAverage" [readonly]="false" [cancel]="false"
+                                [stars]="1"></p-rating>
+                            {{ product.product.ratingsAverage }}
                         </td>
                         <!-- <td><p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag></td> -->
                         <td>
                             <button class="p-button-success mx-1" (click)="decreaseQuantity(product.id)">-</button>
-                            <span class="px-3">{{ product.quantity }}</span>
+                            <span class="px-3">{{ product.count }}</span>
                             <button class="p-button-success mx-1" (click)="increaseQuantity(product.id)">+</button>
                         </td>
                         <td>
                             <button class="remove-btn" label="Remove" severity="danger">Remove Items</button>
                         </td>
                     </tr>
-                </ng-template>
-                <ng-template pTemplate="summary">
-                    <div class="flex align-items-center justify-content-between">
-                        In total there are {{products ? products.length : 0 }} products.
-                    </div>
                 </ng-template>
             </p-table>
         </div>
