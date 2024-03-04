@@ -46,7 +46,7 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-product>
-                    <tr [routerLink]="['/maincomponent/product-details']">
+                    <tr>
 
                         <td>{{ product.product.brand.name }}</td>
                         <td><img [src]="product.product.imageCover" [alt]="product.name" width="100" class="shadow-4" />
@@ -65,7 +65,8 @@
                             <button class="p-button-success mx-1" (click)="increaseQuantity(product.id)">+</button>
                         </td>
                         <td>
-                            <button class="remove-btn" label="Remove" severity="danger">Remove Items</button>
+                            <button (click)="removeItemforLoggedUserCart(product._id)" class="remove-btn" label="Remove"
+                                severity="danger">Remove Items</button>
                         </td>
                     </tr>
                 </ng-template>

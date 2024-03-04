@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/Services/cart.service';
+import { Products } from '../../interfaces/products';
 
 @Component({
   selector: 'app-cart',
@@ -9,6 +10,7 @@ import { CartService } from 'src/app/Services/cart.service';
 export class CartComponent implements OnInit {
   cartProducts: any[] = [];
   cartResponseMessage: any = {};
+
   constructor(private _cartService: CartService) {}
   ngOnInit(): void {
     // this.increaseQuantity(0);
@@ -104,12 +106,23 @@ export class CartComponent implements OnInit {
   getLoggedUserCart() {
     this._cartService.getLoggedUserCart().subscribe({
       next: (response) => {
-        console.log(response.data.products);
-        this.cartResponseMessage = response;
         this.cartProducts = response.data.products;
       },
       error: (err) => {
         console.log(err);
+      },
+    });
+  }
+  removeItemforLoggedUserCart(productId: string) {
+    this._cartService.deleteProductToCart(productId).subscribe({
+      next: (response) => {
+        this.cartProducts = response.data.products;
+        console.log(' this is response', this.cartProducts);
+
+        console.log('this is the id', productId);
+      },
+      error: (err) => {
+        console.log('this is error', err);
       },
     });
   }

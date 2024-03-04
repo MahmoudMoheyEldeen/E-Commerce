@@ -27,4 +27,10 @@ export class CartService {
       headers: this.headers,
     });
   }
+
+  deleteProductToCart(productId: string): Observable<any> {
+    return this._httpClient.delete(`${this.baseUrl}/api/v1/cart/${productId}`, {
+      headers: this.headers,
+    });
+  }
 }
