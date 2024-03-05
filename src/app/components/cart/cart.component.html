@@ -65,8 +65,8 @@
                             <button class="p-button-success mx-1" (click)="increaseQuantity(product.id)">+</button>
                         </td>
                         <td>
-                            <button (click)="removeItemforLoggedUserCart(product._id)" class="remove-btn" label="Remove"
-                                severity="danger">Remove Items</button>
+                            <button (click)="removeItemforLoggedUserCart(product.product.id)" class="remove-btn"
+                                label="Remove" severity="danger">Remove Items</button>
                         </td>
                     </tr>
                 </ng-template>
