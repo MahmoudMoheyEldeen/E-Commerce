@@ -32,7 +32,9 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this._authservice.logIn(this.loginForm.value).subscribe({
         next: (response) => {
-          console.log(response);
+          console.log(response.token);
+          localStorage.setItem('userToken', response.token);
+          this._authservice.decodeUserToken();
           if (response.message == 'success') {
             this._router.navigate(['/maincomponent']);
           }
