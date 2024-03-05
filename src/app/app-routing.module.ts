@@ -28,7 +28,7 @@ const routes: Routes = [
         title: 'Cart',
       },
       {
-        path: 'shipping-address',
+        path: 'shipping-address/:id',
         component: ShippingAddressComponent,
         title: 'shipping-address',
       },

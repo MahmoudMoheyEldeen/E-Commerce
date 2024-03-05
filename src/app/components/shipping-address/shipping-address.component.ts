@@ -22,24 +22,22 @@ export class ShippingAddressComponent {
   });
 
   submitShippingAddress(dataform: FormGroup) {
-    // console.log(dataform.value);
-    // this._activateRoute.params.subscribe((params) => {
-    //   console.log(params);
-    //   this.cartId = params['id'];
-    // });
-    this._payment
-      .checkout('65e71e7abe8b523235fdf475', dataform.value)
-      .subscribe({
-        next: (response) => {
-          console.log(response);
+    console.log(dataform.value);
+    this._activateRoute.params.subscribe((params) => {
+      console.log(params);
+      this.cartId = params['id'];
+    });
+    this._payment.checkout(this.cartId, dataform.value).subscribe({
+      next: (response) => {
+        console.log(response);
 
-          if (response.status == 'success') {
-            window.location.href = response.session.url;
-          }
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+        if (response.status == 'success') {
+          window.location.href = response.session.url;
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

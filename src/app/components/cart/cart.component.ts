@@ -11,6 +11,7 @@ import { PaymentService } from 'src/app/Services/payment.service';
 export class CartComponent implements OnInit {
   cartProducts: any[] = [];
   cartResponseMessage: any = {};
+  cartId: string = '';
 
   constructor(
     private _cartService: CartService,
@@ -26,6 +27,7 @@ export class CartComponent implements OnInit {
   getLoggedUserCart() {
     this._cartService.getLoggedUserCart().subscribe({
       next: (response) => {
+        this.cartId = response.data._id;
         this.cartProducts = response.data.products;
         this.quantity = response.numOfCartItems;
         this.totalPrice = response.data.totalCartPrice;
