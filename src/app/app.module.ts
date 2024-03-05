@@ -36,9 +36,10 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { OrdersComponent } from './orders/orders.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SplitStringPipe } from './pipes/split-string.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,13 @@ import { SearchPipe } from './pipes/search.pipe';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddHeaderInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
