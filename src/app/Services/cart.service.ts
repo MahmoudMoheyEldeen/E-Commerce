@@ -31,4 +31,7 @@ export class CartService {
   clearWholecart(): Observable<any> {
     return this._httpClient.delete(`${this.baseUrl}/api/v1/cart`);
   }
+  getAllorders(): Observable<any> {
+    return this._httpClient.get(`${this.baseUrl}/api/v1/orders/`);
+  }
 }

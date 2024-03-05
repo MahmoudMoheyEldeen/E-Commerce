@@ -14,6 +14,11 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+  {
+    path: 'allorders',
+    component: OrdersComponent,
+    title: 'All-Orders',
+  },
 
   {
     path: 'maincomponent',
@@ -36,11 +41,6 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterComponent,
-        title: 'All-Products',
-      },
-      {
-        path: 'orders',
-        component: OrdersComponent,
         title: 'All-Products',
       },
     ],
