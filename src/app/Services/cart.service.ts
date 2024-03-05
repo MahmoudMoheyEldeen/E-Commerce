@@ -22,4 +22,13 @@ export class CartService {
   deleteProductToCart(productId: string): Observable<any> {
     return this._httpClient.delete(`${this.baseUrl}/api/v1/cart/${productId}`);
   }
+  updateQuantityInCart(productId: string, count: number): Observable<any> {
+    return this._httpClient.put(`${this.baseUrl}/api/v1/cart/${productId}`, {
+      count: count,
+    });
+  }
+
+  clearWholecart(): Observable<any> {
+    return this._httpClient.delete(`${this.baseUrl}/api/v1/cart`);
+  }
 }

@@ -16,97 +16,17 @@ export class CartComponent implements OnInit {
     // this.increaseQuantity(0);
     this.getLoggedUserCart();
   }
-  userSelectedRating: number = 3;
+  userSelectedRating: number = 1;
   quantity: number = 1;
-  products: any[] = [
-    {
-      id: 0,
-      name: 'Dress',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 50,
-      category: 'Women Clothes',
-      reviews: 3,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 2,
-      quantity: 20,
-    },
-    {
-      id: 1,
-      name: 'Dress',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 70,
-      category: 'Women Clothes',
-      reviews: 3,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 5,
-      quantity: 6,
-    },
-    {
-      id: 2,
-      name: 'skirt',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 10,
-      category: 'Women Clothes',
-      reviews: 3,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 2,
-      quantity: 8,
-    },
-    {
-      id: 3,
-      name: 'Dress',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 50,
-      category: 'Women Clothes',
-      reviews: 5,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 2,
-      quantity: 12,
-    },
-    {
-      id: 4,
-      name: 'playstation 5 ',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 800,
-      category: 'Toys',
-      reviews: 5,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 2,
-      quantity: 1,
-    },
-    {
-      id: 5,
-      name: 'Jeans pants',
-      image: "src='assets/imgs/main-slider-1.jpeg'",
-      price: 25,
-      category: 'Women Clothes',
-      reviews: 3,
-      status: 'asd',
-      inventoryStatus: 'InStock',
-      userSelectedRating: 2,
-      quantity: 1,
-    },
-  ];
-
-  increaseQuantity(index: number) {
-    console.log('index is', index);
-    let upadetdQuantity = this.products[index].quantity++;
-    console.log(upadetdQuantity);
-  }
-  decreaseQuantity(index: number) {
-    console.log('index is', index);
-    let upadetdQuantity = this.products[index].quantity--;
-    console.log(upadetdQuantity);
-  }
+  totalPrice: number = 0;
   getLoggedUserCart() {
     this._cartService.getLoggedUserCart().subscribe({
       next: (response) => {
         this.cartProducts = response.data.products;
+        this.quantity = response.numOfCartItems;
+        this.totalPrice = response.data.totalCartPrice;
+
+        console.log('this is the respnse', response);
       },
       error: (err) => {
         console.log(err);
@@ -117,12 +37,41 @@ export class CartComponent implements OnInit {
     this._cartService.deleteProductToCart(productId).subscribe({
       next: (response) => {
         this.cartProducts = response.data.products;
+        this.quantity = response.numOfCartItems;
+        this.totalPrice = response.data.totalCartPrice;
         console.log(' this is response', this.cartProducts);
-
-        console.log('this is the id', productId);
       },
       error: (err) => {
         console.log('this is error', err);
+      },
+    });
+  }
+
+  updateCartQuantity(productId: string, count: number) {
+    this._cartService.updateQuantityInCart(productId, count).subscribe({
+      next: (response) => {
+        this.cartProducts = response.data.products;
+        this.quantity = response.numOfCartItems;
+        this.totalPrice = response.data.totalCartPrice;
+        console.log(response);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  clearCart() {
+    this._cartService.clearWholecart().subscribe({
+      next: (response) => {
+        this.cartProducts = [];
+        this.quantity = 0;
+        this.totalPrice = 0;
+        // response.numOfCartItems = 0;
+        console.log(response);
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
   }
