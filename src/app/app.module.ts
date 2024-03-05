@@ -40,6 +40,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SplitStringPipe } from './pipes/split-string.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
+import { ShippingAddressComponent } from './components/shipping-address/shipping-address.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
     OrdersComponent,
     SplitStringPipe,
     SearchPipe,
+    ShippingAddressComponent,
   ],
   imports: [
     BrowserModule,

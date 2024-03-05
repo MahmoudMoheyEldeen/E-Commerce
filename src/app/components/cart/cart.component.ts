@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/Services/cart.service';
 import { Products } from '../../interfaces/products';
+import { PaymentService } from 'src/app/Services/payment.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,10 @@ export class CartComponent implements OnInit {
   cartProducts: any[] = [];
   cartResponseMessage: any = {};
 
-  constructor(private _cartService: CartService) {}
+  constructor(
+    private _cartService: CartService,
+    private _payment: PaymentService
+  ) {}
   ngOnInit(): void {
     // this.increaseQuantity(0);
     this.getLoggedUserCart();

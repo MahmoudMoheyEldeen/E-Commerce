@@ -7,6 +7,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { OrdersComponent } from './orders/orders.component';
+import { ShippingAddressComponent } from './components/shipping-address/shipping-address.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
         path: 'product-details/:id',
         component: ProductDetailsComponent,
         title: 'Cart',
+      },
+      {
+        path: 'shipping-address',
+        component: ShippingAddressComponent,
+        title: 'shipping-address',
       },
 
       {

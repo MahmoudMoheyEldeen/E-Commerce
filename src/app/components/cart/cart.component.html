@@ -83,8 +83,16 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="summary">
-                    <div class="flex align-items-center justify-content-between">
-                        The Total Price Is {{totalPrice}} EGP.
+                    <div class="d-flex justify-content-between">
+                        <div class="flex align-items-center justify-content-between">
+                            The Total Price Is {{totalPrice}} EGP.
+                        </div>
+                        <div>
+                            <button [routerLink]="['/maincomponent/shipping-address']" class="remove-btn" label="Remove"
+                                severity="danger">
+                                Payment
+                            </button>
+                        </div>
                     </div>
                 </ng-template>
             </p-table>
