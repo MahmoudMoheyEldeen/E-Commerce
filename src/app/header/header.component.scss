@@ -16,20 +16,26 @@
 
 .nav-link:hover {
     // background-color: var(--link-active-color);
-    color: #E5A46E !important;
+    // color: #E5A46E !important;
+    // color: white !important;
+    // font-style: oblique;
+    // font-size: 12px;
 
 }
 
-.numofcartitem-badge {
+.for-cart {
     position: relative;
+}
+
+.numofcartitem-badge {
+    position: absolute;
     border-radius: 100%;
-    width: 1rem;
-    height: 1rem;
+    width: 1.2rem;
+    height: 1.2rem;
     background-color: #E5A46E;
     text-align: center;
+    right: 0px;
+    top: 0px;
 
-    p {
-        position: absolute;
-    }
 
 }

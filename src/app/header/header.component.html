@@ -23,10 +23,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">LogOut</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item for-cart">
                     <a class="nav-link" [routerLink]="['cart']" routerLinkActive="router-link-active">
                         <div class="numofcartitem-badge d-flex justify-content-center align-items-center">
-                            <p class="">{{this._cartService.numberofcartItems.getValue()}}</p>
+                            <p class="m-0 p-0">{{this._cartService.numberofcartItems.getValue()}}</p>
                         </div>
 
                         <i class="pi pi-cart-plus" style="font-size: 1.5rem ;"></i>
