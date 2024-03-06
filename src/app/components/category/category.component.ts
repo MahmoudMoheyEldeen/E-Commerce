@@ -15,7 +15,9 @@ export class CategoryComponent {
   eachObject: any = {};
   userSelectedRating: number = 3;
   allCategories: any[] = [];
-  allCategoriesName: string[] = [];
+  cart: any = {};
+  allCategoriesName: {}[] = [];
+  specificCategoryId: string = '';
 
   form: FormGroup = new FormGroup({
     selectCategory: new FormControl(''),
@@ -23,7 +25,6 @@ export class CategoryComponent {
 
   rows = 10;
   ngOnInit(): void {
-    this.getspecificCategories();
     this.getAllCategories();
     this.submitDropMenue();
   }
@@ -38,29 +39,33 @@ export class CategoryComponent {
 
   getspecificCategories() {
     this._productService
-      .getSpecificCategory('6439d61c0049ad0b52b90051')
+      .getSpecificCategory(this.specificCategoryId)
       .subscribe({
         next: (response) => {
           console.log('this is category', response.data);
-          this.allCategories = response.data;
-          console.log(this.allCategories);
+          this.cart = response.data;
+          console.log('tesssssssssssssssst', this.cart.name);
         },
       });
   }
   getAllCategories() {
-    let allCategories: any[] = [];
+    let allCategories: { id: number; name: string }[] = [];
     this._productService.getAllCategory().subscribe({
       next: (response) => {
         console.log('hhhhhhhhhhhhhhhhhhhhh', response.data[0]._id);
         for (let i = 0; i < response.data.length; i++) {
-          let name = response.data[i].name;
-          let id = response.data[i]._id;
-          allCategories.push(name);
-          console.log('the name is', name);
-          // this.allCategories.push(name);
+          let category = {
+            id: response.data[i]._id, // Fix the property name to _id
+            name: response.data[i].name,
+          };
+          allCategories.push(category); // Fix the array to allCategories
+          console.log(category);
         }
-        this.allCategoriesName = allCategories;
-        console.log('this is array of names', this.allCategoriesName);
+        this.allCategoriesName = allCategories.map((category) => ({
+          label: category.name,
+          value: category.id,
+        }));
+        console.log('new with map', this.allCategoriesName);
       },
     });
   }
@@ -90,6 +95,8 @@ export class CategoryComponent {
   submitDropMenue() {
     this.form.get('selectCategory')?.valueChanges.subscribe((value) => {
       console.log('Selected category changed to:', value);
+      this.specificCategoryId = value;
+      this.getspecificCategories();
     });
   }
 }
