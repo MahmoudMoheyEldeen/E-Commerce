@@ -42,6 +42,8 @@ import { SearchPipe } from './pipes/search.pipe';
 import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
 import { ShippingAddressComponent } from './components/shipping-address/shipping-address.component';
 import { WhishListComponent } from './components/whish-list/whish-list.component';
+import { CategoryComponent } from './components/category/category.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { WhishListComponent } from './components/whish-list/whish-list.component
     SearchPipe,
     ShippingAddressComponent,
     WhishListComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,6 +93,7 @@ import { WhishListComponent } from './components/whish-list/whish-list.component
     MdbValidationModule,
     ReactiveFormsModule,
     HttpClientModule,
+    DropdownModule,
   ],
   providers: [
     {

@@ -9,6 +9,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ShippingAddressComponent } from './components/shipping-address/shipping-address.component';
 import { WhishListComponent } from './components/whish-list/whish-list.component';
+import { CategoryComponent } from './components/category/category.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
         path: 'wish-list',
         component: WhishListComponent,
         title: 'wishlist',
+      },
+      {
+        path: 'categories',
+        component: CategoryComponent,
+        title: 'Category',
       },
       {
         path: 'shipping-address/:id',

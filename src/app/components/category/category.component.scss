@@ -1,0 +1,73 @@
+.row-for-caruosel {
+    img {
+        height: 25rem;
+    }
+
+    .upper-image,
+    .lower-image {
+
+
+        img {
+            height: 12.5rem;
+            width: 100%;
+        }
+    }
+}
+
+
+
+.row-for-categories {
+    img {
+        height: 5rem;
+        width: 100%;
+    }
+}
+
+.custom-rating {
+    color: orange;
+}
+
+td {
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+.form-control {
+    &:focus {
+        outline-color: #E5A46E;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 500px) {
+
+    /* Your styles for small screens go here */
+    .row-for-caruosel {
+        img {
+            height: 15rem;
+        }
+
+    }
+
+    /* Add more styles as needed */
+}

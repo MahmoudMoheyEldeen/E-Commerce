@@ -16,4 +16,12 @@ export class ProductsService {
   getProductByID(id: any): Observable<any> {
     return this._httpclients.get(`${this.baseUrl}/api/v1/products/${id}`);
   }
+  getSpecificCategory(productId: string): Observable<any> {
+    return this._httpclients.get(
+      `${this.baseUrl}/api/v1/categories/${productId}`
+    );
+  }
+  getAllCategory(): Observable<any> {
+    return this._httpclients.get(`${this.baseUrl}/api/v1/categories`);
+  }
 }
