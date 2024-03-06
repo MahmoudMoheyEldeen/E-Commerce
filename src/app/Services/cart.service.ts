@@ -1,14 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   baseUrl: string = 'https://ecommerce.routemisr.com';
+  numberofcartItems = new BehaviorSubject(0);
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private _httpClient: HttpClient) {
+    this.getLoggedUserCart().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.numberofcartItems.next(response.numOfCartItems);
+        console.log(
+          'this is the number of cart items come from service',
+          this.numberofcartItems
+        );
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 
   addProductToCart(productId: string): Observable<any> {
     return this._httpClient.post(`${this.baseUrl}/api/v1/cart`, {

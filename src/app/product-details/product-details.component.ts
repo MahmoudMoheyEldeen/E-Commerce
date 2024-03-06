@@ -98,6 +98,7 @@ export class ProductDetailsComponent implements OnInit {
       next: (response) => {
         console.log(response);
         this.showSuccess();
+        this._cartService.numberofcartItems.next(response.numOfCartItems);
       },
       error: (err) => {
         console.log(err);

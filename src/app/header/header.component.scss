@@ -19,3 +19,17 @@
     color: #E5A46E !important;
 
 }
+
+.numofcartitem-badge {
+    position: relative;
+    border-radius: 100%;
+    width: 1rem;
+    height: 1rem;
+    background-color: #E5A46E;
+    text-align: center;
+
+    p {
+        position: absolute;
+    }
+
+}

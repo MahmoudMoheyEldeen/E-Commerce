@@ -46,6 +46,7 @@ export class CartComponent implements OnInit {
         this.quantity = response.numOfCartItems;
         this.totalPrice = response.data.totalCartPrice;
         console.log(' this is response', this.cartProducts);
+        this._cartService.numberofcartItems.next(response.numOfCartItems);
       },
       error: (err) => {
         console.log('this is error', err);
@@ -75,6 +76,7 @@ export class CartComponent implements OnInit {
         this.totalPrice = 0;
         // response.numOfCartItems = 0;
         console.log(response);
+        this._cartService.numberofcartItems.next(response.numOfCartItems);
       },
       error: (err) => {
         console.log(err);
