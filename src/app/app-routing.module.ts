@@ -10,6 +10,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { ShippingAddressComponent } from './components/shipping-address/shipping-address.component';
 import { WhishListComponent } from './components/whish-list/whish-list.component';
 import { CategoryComponent } from './components/category/category.component';
+import { authGuard } from './Guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -18,12 +19,14 @@ const routes: Routes = [
   },
   {
     path: 'allorders',
+    canActivate: [authGuard],
     component: OrdersComponent,
     title: 'All-Orders',
   },
 
   {
     path: 'maincomponent',
+    canActivate: [authGuard],
     component: MainComponentComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
