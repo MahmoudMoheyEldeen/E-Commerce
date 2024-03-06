@@ -25,6 +25,7 @@ export class CategoryComponent {
   ngOnInit(): void {
     this.getspecificCategories();
     this.getAllCategories();
+    this.submitDropMenue();
   }
   constructor(private _productService: ProductsService) {}
 
@@ -50,9 +51,10 @@ export class CategoryComponent {
     let allCategories: any[] = [];
     this._productService.getAllCategory().subscribe({
       next: (response) => {
-        console.log('hhhhhhhhhhhhhhhhhhhhh', response.data.length);
+        console.log('hhhhhhhhhhhhhhhhhhhhh', response.data[0]._id);
         for (let i = 0; i < response.data.length; i++) {
           let name = response.data[i].name;
+          let id = response.data[i]._id;
           allCategories.push(name);
           console.log('the name is', name);
           // this.allCategories.push(name);
@@ -83,5 +85,11 @@ export class CategoryComponent {
 
   isFirstPage(): boolean {
     return this.allCategories ? this.first === 0 : true;
+  }
+
+  submitDropMenue() {
+    this.form.get('selectCategory')?.valueChanges.subscribe((value) => {
+      console.log('Selected category changed to:', value);
+    });
   }
 }
