@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class CartService {
   baseUrl: string = 'https://ecommerce.routemisr.com';
   numberofcartItems = new BehaviorSubject(0);
+  numberoffavItems = new BehaviorSubject(0);
 
   constructor(private _httpClient: HttpClient) {
     this.getLoggedUserCart().subscribe({
@@ -18,6 +19,16 @@ export class CartService {
           'this is the number of cart items come from service',
           this.numberofcartItems
         );
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
+    this.getLoggedUserFavouriteList().subscribe({
+      next: (response) => {
+        console.log('favourite response', response.count);
+        this.numberoffavItems.next(response.count);
       },
       error: (err) => {
         console.log(err);

@@ -10,6 +10,7 @@ export class WhishListComponent {
   cartProducts: any[] = [];
   cartResponseMessage: any = {};
   cartId: string = '';
+  productId: string = '';
 
   constructor(private _cartService: CartService) {}
   ngOnInit(): void {
@@ -91,6 +92,18 @@ export class WhishListComponent {
       },
       error: (err) => {
         console.log(err);
+      },
+    });
+  }
+  removeProductfromfavouriteList(productId: string) {
+    this._cartService.removeProducttoFavourite(productId).subscribe({
+      next: (response) => {
+        this.cartId = response.data._id;
+        this.cartProducts = response.data;
+        console.log('this is remvoed from favourite response ', response);
+      },
+      error: (err) => {
+        console.log('this is error to  remove favourite response', err);
       },
     });
   }

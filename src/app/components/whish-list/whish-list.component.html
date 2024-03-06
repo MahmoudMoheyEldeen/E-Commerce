@@ -36,10 +36,7 @@
                                 <p>Favourite Items</p>
                                 <p class="ps-3">{{quantity}}</p>
                             </div>
-                            <div>
-                                <button (click)="clearCart()" class="remove-btn" label="Remove" severity="danger">Remove
-                                    All</button>
-                            </div>
+
 
                         </div>
                     </div>
@@ -68,23 +65,10 @@
                         </td>
                         <!-- <td><p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag></td> -->
                         <td>
-                            <button (click)="removeItemforLoggedUserCart(product.product.id)" class="remove-btn"
+                            <button (click)="removeProductfromfavouriteList(product.id)" class="remove-btn"
                                 label="Remove" severity="danger">Remove Items</button>
                         </td>
                     </tr>
-                </ng-template>
-                <ng-template pTemplate="summary">
-                    <div class="d-flex justify-content-between">
-                        <div class="flex align-items-center justify-content-between">
-                            The Total Price Is {{totalPrice}} EGP.
-                        </div>
-                        <div>
-                            <button [routerLink]="['/maincomponent/shipping-address',cartId]" class="remove-btn"
-                                label="Remove" severity="danger">
-                                Payment
-                            </button>
-                        </div>
-                    </div>
                 </ng-template>
             </p-table>
         </div>
