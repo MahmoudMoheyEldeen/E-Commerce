@@ -112,9 +112,10 @@ export class ProductDetailsComponent implements OnInit {
   addProductTofavouriteList() {
     this._cartService.addProducttoFavourite(this.productId).subscribe({
       next: (response) => {
-        console.log('asdasaaaaaaaaaaa', response.length);
+        console.log('this is length', response.data.length);
+        console.log('this is count', response.length);
         this.IsFavourite = true;
-        // this._cartService.numberoffavItems.next(response.count);
+        this._cartService.numberoffavItems.next(response.data.length);
         console.log('this is add to favourite response ', response);
       },
       error: (err) => {
@@ -125,7 +126,8 @@ export class ProductDetailsComponent implements OnInit {
   removeProductfromfavouriteList() {
     this._cartService.removeProducttoFavourite(this.productId).subscribe({
       next: (response) => {
-        this._cartService.numberoffavItems.next(response.length);
+        this._cartService.numberoffavItems.next(response.data.length);
+
         this.IsFavourite = false;
         console.log('this is remvoed from favourite response ', response);
       },
