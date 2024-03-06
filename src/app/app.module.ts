@@ -41,6 +41,7 @@ import { SplitStringPipe } from './pipes/split-string.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
 import { ShippingAddressComponent } from './components/shipping-address/shipping-address.component';
+import { WhishListComponent } from './components/whish-list/whish-list.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ShippingAddressComponent } from './components/shipping-address/shipping
     SplitStringPipe,
     SearchPipe,
     ShippingAddressComponent,
+    WhishListComponent,
   ],
   imports: [
     BrowserModule,

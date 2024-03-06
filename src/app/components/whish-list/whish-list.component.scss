@@ -1,0 +1,44 @@
+.p-button-success {
+    height: 2rem;
+    width: 2.5rem;
+    border-radius: 5px;
+    background-color: var(--link-active-color);
+    border: none;
+
+    &:hover {
+        background-color: #cc9363;
+    }
+}
+
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+
+
+.remove-btn {
+    border-radius: 10px;
+    height: 2rem;
+    width: 6rem;
+    border: none;
+    background-color: #125669;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+
+
+    &:hover {
+        background-color: #0e414f;
+        color: white;
+
+    }
+}
+
+.custom-rating {
+    color: orange;
+}

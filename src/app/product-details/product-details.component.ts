@@ -15,6 +15,7 @@ import { CartService } from '../Services/cart.service';
 export class ProductDetailsComponent implements OnInit {
   productDetails!: ProductDetails;
   productId: string = '';
+  IsFavourite: boolean = false;
   brand: Brand[] = [];
   x: boolean = true;
   constructor(
@@ -103,6 +104,28 @@ export class ProductDetailsComponent implements OnInit {
       error: (err) => {
         console.log(err);
         this.showError();
+      },
+    });
+  }
+  addProductTofavouriteList() {
+    this._cartService.addProducttoFavourite(this.productId).subscribe({
+      next: (response) => {
+        this.IsFavourite = true;
+        console.log('this is add to favourite response ', response);
+      },
+      error: (err) => {
+        console.log('this is error to  add favourite response', err);
+      },
+    });
+  }
+  removeProductfromfavouriteList() {
+    this._cartService.removeProducttoFavourite(this.productId).subscribe({
+      next: (response) => {
+        this.IsFavourite = false;
+        console.log('this is remvoed from favourite response ', response);
+      },
+      error: (err) => {
+        console.log('this is error to  remove favourite response', err);
       },
     });
   }

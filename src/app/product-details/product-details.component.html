@@ -27,6 +27,9 @@
                 <button type="button" pButton pRipple (click)="addProductToCart()" label="Add To Cart"
                     class="p-button-success mt-4"></button>
 
+                <i (click)="IsFavourite?removeProductfromfavouriteList(): addProductTofavouriteList()"
+                    [class]="IsFavourite ? 'pi pi-heart-fill ms-3 ' : 'pi pi-heart ms-3'" style="font-size: 2rem"></i>
+                <!-- <i (click)="removeProductfromfavouriteList()" class="ms-3 pi pi-heart-fill" style="font-size: 2rem"></i> -->
 
                 <!-- <button type="button" pButton pRipple label="Success" class="p-button-success"></button> -->
 

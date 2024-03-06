@@ -8,6 +8,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ShippingAddressComponent } from './components/shipping-address/shipping-address.component';
+import { WhishListComponent } from './components/whish-list/whish-list.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
         path: 'product-details/:id',
         component: ProductDetailsComponent,
         title: 'Cart',
+      },
+      {
+        path: 'wish-list',
+        component: WhishListComponent,
+        title: 'wishlist',
       },
       {
         path: 'shipping-address/:id',

@@ -49,4 +49,17 @@ export class CartService {
   getAllorders(): Observable<any> {
     return this._httpClient.get(`${this.baseUrl}/api/v1/orders/`);
   }
+  addProducttoFavourite(productId: string): Observable<any> {
+    return this._httpClient.post(`${this.baseUrl}/api/v1/wishlist`, {
+      productId: productId,
+    });
+  }
+  removeProducttoFavourite(productId: string): Observable<any> {
+    return this._httpClient.delete(
+      `${this.baseUrl}/api/v1/wishlist/${productId}`
+    );
+  }
+  getLoggedUserFavouriteList(): Observable<any> {
+    return this._httpClient.get(`${this.baseUrl}/api/v1/wishlist`);
+  }
 }
