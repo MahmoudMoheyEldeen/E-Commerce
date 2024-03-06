@@ -83,10 +83,7 @@ export class WhishListComponent {
   getLoggedFavouriteList() {
     this._cartService.getLoggedUserFavouriteList().subscribe({
       next: (response) => {
-        this.cartId = response.data._id;
         this.cartProducts = response.data;
-        this.quantity = response.numOfCartItems;
-        this.totalPrice = response.data.totalCartPrice;
 
         console.log('this is the respnse for favourite', response.data);
       },

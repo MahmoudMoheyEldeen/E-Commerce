@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   productId: string = '';
   IsFavourite: boolean = false;
   brand: Brand[] = [];
+  compareProductID: string = '';
   x: boolean = true;
   constructor(
     private messageService: MessageService,
@@ -26,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.getProductById();
+    this.getLoggedFavouriteList();
   }
 
   images: any[] = [];
@@ -129,6 +131,31 @@ export class ProductDetailsComponent implements OnInit {
       },
       error: (err) => {
         console.log('this is error to  remove favourite response', err);
+      },
+    });
+  }
+  getLoggedFavouriteList() {
+    let matchFound = false;
+    this._cartService.getLoggedUserFavouriteList().subscribe({
+      next: (response) => {
+        console.log('all data in favourite', response.data[0].id);
+        for (let i = 0; i < response.data.length; i++) {
+          const currentId = response.data[i].id;
+
+          // Compare currentId with productId
+          if (currentId === this.productId) {
+            matchFound = true;
+            this.IsFavourite = true;
+            console.log('found');
+            break;
+          }
+        }
+        if (!matchFound) {
+          this.IsFavourite = false;
+        }
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
   }
