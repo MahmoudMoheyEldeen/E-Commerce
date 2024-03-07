@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="row row-for-all-products d-flex mx-auto">
+        <div class="card">
+            <p-table [value]="allProducts" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                [tableStyle]="{'min-width': '50rem'}"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10,25,50]">
+                <!-- <ng-template pTemplate="caption" let-product>
+                    <div class="flex align-items-center justify-content-between">
+                
+
+                    </div>
+                </ng-template> -->
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Reviews</th>
+                        <th>Quantity</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr [routerLink]="['/maincomponent/product-details',product.id]">
+                        <td>{{ product.name}}</td>
+                        <td><img [src]="product.imageCover" [alt]="product.name" width="100" class="shadow-4" /></td>
+                        <td>{{ product.price | currency:'EGP' }}</td>
+                        <td>{{ product.category.name }}</td>
+                        <td>
+                            <p-rating [(ngModel)]="product.ratingsAverage" [readonly]="false" [cancel]="false"
+                                [stars]="1"></p-rating>
+                            {{ product.ratingsAverage }}
+                        </td>
+                        <td>{{ product.quantity }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+            <!-- <table>
+                <tr>
+                    <th>name</th>
+                </tr>
+                <tr *ngFor="let product of allProducts">
+                    <td>{{product.name}}</td>
+                </tr>
+            </table> -->
+        </div>
+
+
+
+    </div>
+
+
+</div>

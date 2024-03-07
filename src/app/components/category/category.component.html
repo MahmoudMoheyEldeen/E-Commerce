@@ -1,7 +1,7 @@
 <div class="row">
     <div class="row d-flex flex-wrap flex-h">
         <div class="col-4" *ngFor="let product of allCategories">
-            <div class=" show-category text-center">
+            <div class=" show-category text-center " [routerLink]="['/maincomponent/subcategory',product._id]">
                 <img src={{product.image}} alt="">
                 <p>{{product.name}}</p>
             </div>

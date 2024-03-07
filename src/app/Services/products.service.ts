@@ -24,4 +24,9 @@ export class ProductsService {
   getAllCategory(): Observable<any> {
     return this._httpclients.get(`${this.baseUrl}/api/v1/categories`);
   }
+  getSubCategory(productId: string): Observable<any> {
+    return this._httpclients.get(
+      `${this.baseUrl}/api/v1/categories/${productId}/subcategories`
+    );
+  }
 }

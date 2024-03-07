@@ -44,6 +44,7 @@ import { ShippingAddressComponent } from './components/shipping-address/shipping
 import { WhishListComponent } from './components/whish-list/whish-list.component';
 import { CategoryComponent } from './components/category/category.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { SubCategoryComponent } from './components/sub-category/sub-category.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { DropdownModule } from 'primeng/dropdown';
     ShippingAddressComponent,
     WhishListComponent,
     CategoryComponent,
+    SubCategoryComponent,
   ],
   imports: [
     BrowserModule,

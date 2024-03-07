@@ -11,6 +11,7 @@ import { ShippingAddressComponent } from './components/shipping-address/shipping
 import { WhishListComponent } from './components/whish-list/whish-list.component';
 import { CategoryComponent } from './components/category/category.component';
 import { authGuard } from './Guard/auth.guard';
+import { SubCategoryComponent } from './components/sub-category/sub-category.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,11 @@ const routes: Routes = [
         path: 'categories',
         component: CategoryComponent,
         title: 'Category',
+      },
+      {
+        path: 'subcategory/:id',
+        component: SubCategoryComponent,
+        title: 'Sub-Category',
       },
       {
         path: 'shipping-address/:id',
