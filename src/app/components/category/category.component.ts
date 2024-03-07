@@ -49,23 +49,25 @@ export class CategoryComponent {
       });
   }
   getAllCategories() {
-    let allCategories: { id: number; name: string }[] = [];
+    // let allCategories: { id: number; name: string }[] = [];
     this._productService.getAllCategory().subscribe({
       next: (response) => {
-        console.log('hhhhhhhhhhhhhhhhhhhhh', response.data[0]._id);
-        for (let i = 0; i < response.data.length; i++) {
-          let category = {
-            id: response.data[i]._id, // Fix the property name to _id
-            name: response.data[i].name,
-          };
-          allCategories.push(category); // Fix the array to allCategories
-          console.log(category);
-        }
-        this.allCategoriesName = allCategories.map((category) => ({
-          label: category.name,
-          value: category.id,
-        }));
-        console.log('new with map', this.allCategoriesName);
+        console.log('this is all categories', response.data);
+        this.allCategories = response.data;
+        // console.log('hhhhhhhhhhhhhhhhhhhhh', response.data[0]._id);
+        // for (let i = 0; i < response.data.length; i++) {
+        //   let category = {
+        //     id: response.data[i]._id, // Fix the property name to _id
+        //     name: response.data[i].name,
+        //   };
+        //   allCategories.push(category); // Fix the array to allCategories
+        //   console.log(category);
+        // }
+        // this.allCategoriesName = allCategories.map((category) => ({
+        //   label: category.name,
+        //   value: category.id,
+        // }));
+        // console.log('new with map', this.allCategoriesName);
       },
     });
   }
