@@ -19,9 +19,9 @@
         </div>
         <div class="col-lg-8 pt-5">
 
-            <p-card header={{productDetails.brand.name}}>
+            <p-card header={{brand.name}}>
                 <p class="m-0">
-                    {{productDetails.description}}
+                    {{defaultProduct.slug}}
                 </p>
                 <p-toast position="top-right"></p-toast>
                 <button type="button" pButton pRipple (click)="addProductToCart()" label="Add To Cart"

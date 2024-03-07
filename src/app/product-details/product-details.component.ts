@@ -13,10 +13,45 @@ import { CartService } from '../Services/cart.service';
   providers: [MessageService],
 })
 export class ProductDetailsComponent implements OnInit {
-  productDetails!: ProductDetails;
+  defaultProduct: Products = {
+    sold: 0,
+    images: [],
+    subcategory: [],
+    ratingsQuantity: 0,
+    _id: '',
+    title: '',
+    slug: '',
+    description: '',
+    quantity: 0,
+    price: 0,
+    imageCover: '',
+    category: {
+      _id: '',
+      name: '',
+      slug: '',
+    },
+    brand: {
+      _id: '',
+      name: '',
+      slug: '',
+    },
+    ratingsAverage: 0,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    id: '',
+    priceAfterDiscount: 0,
+    availableColors: [],
+  };
   productId: string = '';
   IsFavourite: boolean = false;
-  brand: Brand[] = [];
+  brand: Brand = {
+    _id: '',
+    name: '',
+    slug: '',
+    image: '',
+    category: [],
+  };
+  number: number = 0;
   compareProductID: string = '';
   x: boolean = true;
   constructor(
@@ -85,9 +120,11 @@ export class ProductDetailsComponent implements OnInit {
     this._productService.getProductByID(this.productId).subscribe({
       next: (response) => {
         // console.log('this is the response', response);
-        this.productDetails = response.data;
+        this.defaultProduct = response.data;
         this.images = response.data.images;
-        console.log('this is the response', this.productDetails);
+        this.brand = response.data.brand;
+        console.log('this is the response', this.defaultProduct);
+        console.log('this is the Brand', this.brand);
         console.log('this is the images', this.images);
       },
       error: (err) => {
