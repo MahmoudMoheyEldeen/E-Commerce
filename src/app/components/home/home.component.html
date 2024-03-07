@@ -35,12 +35,16 @@
         <p>Shop Popular Categories</p>
     </div>
     <div class="row row-for-categories d-flex mx-auto">
-        <div class="col  px-0 text-center">
+        <div class="col  px-0 text-center px-1 show-category" *ngFor="let product of allCategories">
+            <img src={{product.image}} alt="">
+            <p>{{product.name}}</p>
+        </div>
+        <!-- <div class="col  px-0 text-center" *ngFor="let product of allCategories">
             <img src="assets/imgs/main-slider-1.jpeg" alt="">
             <img src="assets/imgs/main-slider-2.jpeg" alt="">
             <p>Electronics</p>
-        </div>
-        <div class="col  px-0 text-center">
+        </div> -->
+        <!-- <div class="col  px-0 text-center">
             <img src="assets/imgs/main-slider-1.jpeg" alt="">
             <img src="assets/imgs/main-slider-2.jpeg" alt="">
             <p>Mobiles</p>
@@ -72,7 +76,7 @@
             <img src="assets/imgs/main-slider-2.jpeg" alt="">
             <p>Baby & Toys</p>
 
-        </div>
+        </div> -->
     </div>
     <div class="row row-for-all-products d-flex mx-auto">
         <div class="card">
