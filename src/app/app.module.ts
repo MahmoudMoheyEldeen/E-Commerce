@@ -45,6 +45,7 @@ import { WhishListComponent } from './components/whish-list/whish-list.component
 import { CategoryComponent } from './components/category/category.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { SubCategoryComponent } from './components/sub-category/sub-category.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { SubCategoryComponent } from './components/sub-category/sub-category.com
       useClass: AddHeaderInterceptor,
       multi: true,
     },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
 })
