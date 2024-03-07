@@ -22,7 +22,7 @@
                         routerLinkActive="router-link-active">Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">LogOut</a>
+                    <a (click)="_authService.logOut()" class="nav-link">LogOut</a>
                 </li>
                 <li class="nav-item for-cart">
                     <a class="nav-link" [routerLink]="['cart']" routerLinkActive="router-link-active">
